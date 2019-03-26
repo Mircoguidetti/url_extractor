@@ -1,0 +1,55 @@
+{% extends "components/base.html" %}
+{% load static %}
+{% block head_title %}
+  URL to Domain Tool – Extract domains from URLs for Disavow Files | Reboot Digital Agency
+{% endblock %}
+{% block metadescription%}
+  Try our URL to Domain Tool when you are creating your next disavow file. Get domains from URLs easily and quickly. 
+{% endblock metadescription %}
+<link rel="canonical" href="{% block canonical_url %}https://www.rebootonline.com{{ request.get_full_path }}{% endblock %}">
+
+{% block content %}
+
+<main class="lg-pad-hz-180 lgx-pad-hz-220">
+    <div class="flex lg-pad-t-20">
+
+        <div class=" bg-white w-100 lg-z-auto lg-mrg-t-n50 lgx-mrg-t-n45 lgx-mrg-t-n90">
+          <h1 class="txt-center lg-font-1-4 pad-t-20" for="id_uri"> Extract domains from URL</h1>
+          <section class="lg-pad-hz-200 lgx-pad-hz-250 pad-tb-20">
+            <form  class="lg-tool-background-color pad-tb-30 pad-hz-10  lg-pad-hz-50" method="post" novalidate>
+              {% csrf_token %}  
+                  <textarea class=" lg-tool-textarea-scroll tool-textarea-scroll mrg-b-30  pad-10" name="uri" rows="30" cols="90" required id= "id_uri"></textarea>
+                    
+                      <div class=" flex flex-align-center flex-cols">
+                        <!-- button -->
+                        <div class="w-300px">
+                          <button style="width: -webkit-fill-available;" class="font-1 txt-center mrg-b-10" type="submit" name="submit">
+                            Submit 
+                           
+                          </button>
+                        </div>
+                        <!-- include subdomain -->
+                        <div class="bg-white w-300px pad-tb-5 tool-label-include txt-right">
+                          <span class="pad-r-25 lg-pad-r-35">
+                            <label class="pad-r-25 font-0-8 pad-tb-10 txt-left" for="id_subdomain"> Include Subdomains</label>
+                            <input class="mrg-l-5" type="checkbox" name="subdomain" id="id_subdomain">
+                            
+                          </span>
+                        </div>
+
+                      <div>
+                         {% if messages %}
+                            {% for message in messages %}
+                              <p class="txt-red">{{message}}</p>
+                            {% endfor %}
+                         {% endif %}
+                       </div>
+                  </div>  
+              </form>
+          </section>
+        </div>
+    </div>
+</main>
+
+{% endblock %}
+

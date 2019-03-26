@@ -1,0 +1,54 @@
+{% extends "components/base.html" %}
+{% load static %}
+
+<link rel="canonical" href="{% block canonical_url %}https://www.rebootonline.com{{ request.get_full_path }}{% endblock %}">
+
+{% block content %}
+
+<main class="lg-pad-hz-180 lgx-pad-hz-160">
+    <div class="flex lg-pad-t-20">
+        <div class=" bg-white w-100 lg-z-auto lg-mrg-t-n50 lgx-mrg-t-n45 lgx-mrg-t-n90">
+          
+          <section class="pad-tb-20 pad-hz-20 lg-pad-hz-100 lgx-pad-hz-300 lg-pad-tb-50">
+            <div class="flex">
+              <h1 class="txt-center lg-txt-left text-capitalize pad-b-10 lg-pad-b-30 font-0-9 lg-font-1 lgx-font-1-2 lgx-pad-r-10">Download Domains For Disavow File</h1>
+            </div>
+
+            <div class="lg-tool-background-color lg-pad-50">
+              <form   method="post" novalidate>
+            {% csrf_token %}
+            <div class="flex flex-cols mrg-b-5 flex-align-center lg-flex-rows lg-flex-just-between">
+              <div>
+                <a class="a-decor-none back-to-search" href="{% url 'url_to_domain_view' %}"> Back to search </a>
+            </div>
+            <div class="flex flex-cols flex-align-center lg-flex-rows">
+              <button class="mrg-b-10" type="download" name="download-txt"> Download as .txt </button>
+              
+                <button class="mrg-b-10 mrg-l-10" type="download" name="download-csv"> Download as .csv  
+                </button>
+             
+            </div>
+            </div> 
+          </form>
+          <div class=" lg-tool-textarea-scroll tool-textarea-scroll  test-bg-white">
+            <table class="tool-table">
+            <tr class=" text-left tool-top-textarea txt-white">
+              <th class="pad-tb-10 txt-center lg-txt-left lg-pad-l-30 w-10px">#</th>
+              <th class=" pad-tb-10 txt-left">Domain</th>
+            </tr>
+              {% for url in urls %}
+              <tr>
+                <td class="pad-r-20 pad-l-10 lg-pad-r-60 lg-pad-l-30 lgx-pad-r-40 lgx-pad-l-30 font-0-7 lg-font-0-8">{{forloop.counter}}</td>  
+                <td class="font-0-7  lg-font-0-8">{{url}}</td>
+              </tr>
+          {% endfor %}
+    </table>
+    </div>
+
+            </div>
+        </section>
+      </div>
+    </div>
+</main>
+
+{% endblock %}
